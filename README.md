@@ -1,12 +1,14 @@
-## Created with Capacitor Create App
+## Bug Report: Capacitor.Plugins.App.getInfo sometimes does not complete (resolve/reject) #2278
+Minimal sample app to reproduce bug
 
-This app was created using [`@capacitor/create-app`](https://github.com/ionic-team/create-capacitor-app),
-and comes with a very minimal shell for building an app.
+See https://github.com/ionic-team/capacitor-plugins/issues/2278
 
 ### Running this example
 
-To run the provided example, you can use `npm start` command.
+Have either a android phone connected or emulator running, then run the following commands:
 
 ```bash
-npm start
+vite build
+
+npx cap run android
 ```
