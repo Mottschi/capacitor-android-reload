@@ -36,10 +36,12 @@
 
             counter.innerHTML = `Try #${count}`;
 
-            await Capacitor.Plugins.App.getInfo();
+            try {
+                await Capacitor.Plugins.App.getInfo();
+            } catch {
 
+            }
             Capacitor.Plugins.SplashScreen.hide();
-
             location.reload();
         });
     </script>
