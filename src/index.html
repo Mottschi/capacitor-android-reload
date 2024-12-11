@@ -25,19 +25,28 @@
     <meta name="theme-color" content="#31d53d"/>
     <script>
         window.addEventListener('DOMContentLoaded', async () => {
-            const errorEl = document.getElementById('error-text'),
-                appInfo = await Capacitor.Plugins.App.getInfo(),
-                id = appInfo.id;
+            let count = localStorage.getItem('count'),
+                counterElement = document.getElementById('counter');
 
-            errorEl.innerHTML = id;
+            if (count == null) {
+                count = 0;
+            }
+
+            localStorage.setItem('count', ++count);
+
+            counter.innerHTML = `Try #${count}`;
+
+            await Capacitor.Plugins.App.getInfo();
 
             Capacitor.Plugins.SplashScreen.hide();
+
+            location.reload();
         });
     </script>
 </head>
     <body>
-        <h1 id="error-text">
-            ERROR
+        <h1 id="counter">
+
         </h1>
 
     <button onclick="location.reload()">Reload</button>
