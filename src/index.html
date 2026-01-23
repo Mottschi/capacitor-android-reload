@@ -25,32 +25,47 @@
     <meta name="theme-color" content="#31d53d"/>
     <script>
         window.addEventListener('DOMContentLoaded', async () => {
-            let count = localStorage.getItem('count'),
-                counterElement = document.getElementById('counter');
-
-            if (count == null) {
-                count = 0;
-            }
-
-            localStorage.setItem('count', ++count);
-
-            counter.innerHTML = `Try #${count}`;
-
-            try {
-                await Capacitor.Plugins.App.getInfo();
-            } catch {
-
-            }
             Capacitor.Plugins.SplashScreen.hide();
-            location.reload();
+
         });
     </script>
 </head>
     <body>
-        <h1 id="counter">
+        <div id="toolbar">
+            <button id="toggle-edit-view-button" type="button">
+                Toggle Editing View
+            </button>
+            <button id="toggle-data-view-button" type="button">
+                Toggle Data View
+            </button>
+        </div>
 
-        </h1>
+        <div class="main-container">
+            <div class="editor-container editor-container_inline-editor" id="editor-container">
+                <h2>Second Editor Field</h2>
+                <div class="editor-container__editor"><div id="editor"></div></div>
+            </div>
+            <div class="editor-container editor-container_inline-editor" id="editor-container2">
+                <h2>Editor</h2>
+                <div class="editor-container__editor"><div id="editor2"></div></div>
+            </div>
+            <div id="output-container">
+                <div id="editing-view-output" class="hidden">
+                    <h2>Editing View:</h2>
+                    <div id="editing-output-text" class="output"></div>
+                    <div id="editing-output-rendered" class="output ck-content"></div>
+                </div>
+                <div id="data-view-output">
+                    <h2>Data View:</h2>
+                    <div id="data-output-text" class="output"></div>
+                    <div id="data-output-rendered" class="output ck-content"></div>
+                </div>
+            </div>
+        </div>
 
-    <button onclick="location.reload()">Reload</button>
+        <div id="footer-toolbar">
+            <button onclick="location.reload()">Reload</button>
+        </div>
+        <script type="module" src="./main.js"></script>
     </body>
 </html>
